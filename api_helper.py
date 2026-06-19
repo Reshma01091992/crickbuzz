@@ -3,7 +3,7 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 API_HOST = "cricbuzz-cricket.p.rapidapi.com"
-API_KEY  = "c0b1a4e556mshe95aa6a1451e5bfp19354fjsn414e6ef191ea"
+API_KEY  = "e8adbcd091mshfe2698bcbbf01edp1c271fjsn148c27ffedc7"
 BASE_URL = f"https://{API_HOST}"
 
 HEADERS = {
@@ -42,9 +42,24 @@ def get_bowling_stats(format="odi"):
 def search_player(name):
     return api_get(f"stats/v1/player/search?plrN={name}")
 
+def get_player_batting_career(player_id):
+    return api_get(f"stats/v1/player/{player_id}/batting")
+
+def get_player_bowling_career(player_id):
+    return api_get(f"stats/v1/player/{player_id}/bowling")
+
 # ── SERIES ───────────────────────────────────────────
 def get_series(category="international"):
     return api_get(f"series/v1/{category}")
+
+def get_player_info(player_id):
+    return api_get(f"stats/v1/player/{player_id}")
+ 
+def get_player_batting_career(player_id):
+    return api_get(f"stats/v1/player/{player_id}/batting")
+ 
+def get_player_bowling_career(player_id):
+    return api_get(f"stats/v1/player/{player_id}/bowling")
 
 if __name__ == "__main__":
     print("Testing API...")
